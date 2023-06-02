@@ -1,13 +1,12 @@
 const url = "http://api.worldbank.org/v2/country/?format=json";
 
-const main = document.querySelector("main");
 const div = document.getElementById("country-list");
-const prevPg = document.getElementById("prevPage");
+const prevPg = document.getElementById("prevPg");
 const nextPg = document.getElementById("nextPg");
 
-getCountries();
+getCountries(url);
 
-async function getCountries() {
+async function getCountries(url) {
   try {
     const response = await fetch(url);
     const data = await response.json();
@@ -41,33 +40,30 @@ function listData(data) {
       } else if (country.incomeLevel.value === "Low income") {
         ul.style.backgroundColor = "red";
       } else {
-
       }
     });
   });
   main.appendChild(div);
 }
 
-function pageSwap() {
-    
-}
+let pageNum = 1;
 
-// function clickInfo() {
-//     ul.innerHTML = `
-//         <li><strong>Region:</strong>${country.region.value}</li>
-//         <li><strong>Capital:</strong>${country.capitalCity}</li>
-//         <li><strong>Income:</strong>${country.incomeLevel.value}</li>
-//       `;
-//       if (country.incomeLevel.value === "High income") {
-//         ul.style.backgroundColor = "green";
-//       } else if (
-//         country.incomeLevel.value === "Lower middle income" ||
-//         country.incomeLevel.value === "Upper middle income"
-//       ) {
-//         ul.style.backgroundColor = "yellow";
-//       } else if (country.incomeLevel.value === "Low income") {
-//         ul.style.backgroundColor = "red";
-//       } else {
+nextPg.addEventListener("click", () => {
+  if (pageNum > 5) {
+  } else {
+    div.innerHTML = "";
+    pageNum++;
+    let page = "&page=" + pageNum;
+    getCountries(url + page);
+  }
+});
 
-//       }
-// }
+prevPg.addEventListener("click", () => {
+  if (pageNum < 2) {
+  } else {
+    div.innerHTML = "";
+    pageNum--;
+    let page = "&page=" + pageNum;
+    getCountries(url + page);
+  }
+});
