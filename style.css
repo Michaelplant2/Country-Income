@@ -1,0 +1,28 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    width: 100%;
+    text-align: center;
+}
+
+#country-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#country-list ul {
+    margin: 3px 0;
+    width: 300px;
+    font-size: 20px;
+    border: 1px solid black;
+}
+
+li {
+    list-style: none;
+}
