@@ -3,8 +3,7 @@ const url = "http://api.worldbank.org/v2/country/?format=json";
 const div = document.getElementById("country-list");
 const prevPg = document.getElementById("prevPg");
 const nextPg = document.getElementById("nextPg");
-
-getCountries(url);
+let pageNum = 1;
 
 async function getCountries(url) {
   try {
@@ -15,6 +14,8 @@ async function getCountries(url) {
     console.log(error);
   }
 }
+
+getCountries(url);
 
 function listData(data) {
   data[1].map(function (country) {
@@ -45,8 +46,6 @@ function listData(data) {
   });
   main.appendChild(div);
 }
-
-let pageNum = 1;
 
 nextPg.addEventListener("click", () => {
   if (pageNum > 5) {
