@@ -25,27 +25,29 @@ function listData(data) {
     const ul = document.createElement("ul");
     ul.innerHTML = countryName;
     div.appendChild(ul);
-    ul.addEventListener("click", () => {
-      ul.innerHTML = `
-        <li><strong>Region:</strong>${country.region.value}</li>
-        <li><strong>Capital:</strong>${country.capitalCity}</li>
-        <li><strong>Income:</strong>${country.incomeLevel.value}</li>
-      `;
-      if (country.incomeLevel.value === "High income") {
-        ul.style.backgroundColor = "green";
-      } else if (
-        country.incomeLevel.value === "Lower middle income" ||
-        country.incomeLevel.value === "Upper middle income"
-      ) {
-        ul.style.backgroundColor = "yellow";
-      } else if (country.incomeLevel.value === "Low income") {
-        ul.style.backgroundColor = "red";
-      } else {
-      }
-    });
   });
   main.appendChild(div);
 }
+
+div.addEventListener("click", (e) => {
+  
+  ul.innerHTML = `
+    <li><strong>Region:</strong>${country.region.value}</li>
+    <li><strong>Capital:</strong>${country.capitalCity}</li>
+    <li><strong>Income:</strong>${country.incomeLevel.value}</li>
+  `;
+  if (country.incomeLevel.value === "High income") {
+    ul.style.backgroundColor = "green";
+  } else if (
+    country.incomeLevel.value === "Lower middle income" ||
+    country.incomeLevel.value === "Upper middle income"
+  ) {
+    ul.style.backgroundColor = "yellow";
+  } else if (country.incomeLevel.value === "Low income") {
+    ul.style.backgroundColor = "red";
+  } else {
+  }
+});
 
 nextPg.addEventListener("click", () => {
   if (pageNum > 5) {
